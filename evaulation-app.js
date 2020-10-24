@@ -24,10 +24,6 @@ const deviceIdList = ['ab2a202382bffcf7', '631b445917a8187d', '09260b666f063af3'
 
 deviceIdList.forEach(deviceId => {
     oracle.receive(deviceId, message => {
-        
-        latency = curr_time - float(data['device_data']['xxxStartTs'])
-        f.write(str(latency) + "\n")
-
         if(message['device_data'].hasOwnProperty('xxxStartTs')) {
             const startTs = message['device_data']['xxxStartTs'];
             const latency = Date.now() - startTs;
